@@ -44,10 +44,8 @@ public class ParcelController {
     private String getDiscount(String voucherCode, Integer sum) {
         String cost = null;
         if (voucherCode != null) {
-            //cannot run feign, cert error
             Discount discount = feignClient.getDiscount(voucherCode, "apikey");
             cost = "PHP " + (sum - discount.getDiscount());
-//            cost = "PHP " + (sum - 12.25);
         }
         return cost;
     }
